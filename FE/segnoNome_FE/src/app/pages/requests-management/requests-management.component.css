@@ -1,0 +1,290 @@
+@charset "UTF-8";
+/* Stile base */
+nz-card {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+nz-table {
+  width: 100%;
+  overflow-x: auto; /* Permette lo scrolling se serve */
+  display: block; /* Previene problemi di ridimensionamento */
+  max-width: 100%;
+}
+
+/* Miglioramenti generali */
+thead th {
+  text-align: center;
+  background: #f5f5f5;
+  padding: 10px;
+  white-space: nowrap; /* Impedisce la compressione delle intestazioni */
+  font-size: 14px; /* Migliora la leggibilità */
+}
+
+tbody td {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  word-break: break-word; /* Previene overflow delle note */
+}
+
+td.note-column {
+  max-width: 200px; /* Impedisce la compressione */
+  min-width: 150px;
+  word-wrap: break-word;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Migliora la visibilità della textarea */
+textarea[nz-input] {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Stile per i dropdown */
+nz-select {
+  width: 100%;
+  min-width: 100px;
+}
+
+/* Chiude automaticamente il menu dropdown dopo la selezione */
+nz-option {
+  cursor: pointer;
+}
+
+nz-select nz-option:hover {
+  background-color: #e6f7ff;
+}
+
+/* Stile per i pulsanti */
+button[nz-button] {
+  font-size: 14px;
+  min-width: 100px;
+}
+
+@media (min-width: 1024px) {
+  td.note-column {
+    max-width: 300px;
+  }
+}
+/* 📌 Responsività per schermi medi */
+@media (max-width: 1024px) {
+  td.note-column {
+    max-width: 200px;
+  }
+}
+/* 📌 Responsività per schermi piccoli */
+@media (max-width: 768px) {
+  nz-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  thead {
+    display: none; /* Nasconde le intestazioni della tabella su schermi piccoli */
+  }
+  tbody tr {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  td.note-column {
+    max-width: 100%;
+    min-width: auto;
+  }
+}
+/* Miglior layout dei pulsanti */
+.nz-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nz-col {
+  flex: 1 1 45%;
+  min-width: 100px;
+}
+
+/* Stile delle notifiche personalizzate */
+.notification-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.notification-error {
+  background-color: #f2dede;
+  color: #a94442;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* Stile per la conferma eliminazione */
+.confirm-box {
+  background: #fff3cd;
+  padding: 15px;
+  border: 1px solid #856404;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.confirm-box p {
+  font-weight: bold;
+  color: #856404;
+}
+
+.confirm-box button {
+  margin: 5px;
+}
+
+/* 🔹 RESPONSIVITÀ PER SCHERMI PICCOLI */
+@media (max-width: 768px) {
+  nz-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  thead {
+    display: none; /* Nasconde l'intestazione della tabella su schermi piccoli */
+  }
+  tbody tr {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  /* Migliora il layout delle opzioni di selezione */
+  nz-select {
+    width: 100%;
+  }
+  /* Migliora la textarea su schermi piccoli */
+  textarea[nz-input] {
+    width: 100%;
+    font-size: 14px;
+    padding: 5px;
+  }
+  /* Migliora la visibilità dei pulsanti */
+  button[nz-button] {
+    width: 100%;
+    font-size: 14px;
+  }
+  .button-danger {
+    background-color: #d9534f; /* Rosso Bootstrap */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+  }
+  .button-danger:hover {
+    background-color: #c9302c; /* Rosso più scuro al passaggio del mouse */
+  }
+  .button-danger:active {
+    transform: scale(0.95); /* Effetto di pressione */
+  }
+  .button-danger:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+  }
+}
+.popup-message {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+}
+
+::ng-deep .ant-modal {
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+
+::ng-deep .ant-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+::ng-deep .ant-modal-header {
+  background: #f56c6c;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+
+::ng-deep .modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 10px;
+}
+
+::ng-deep .modal-buttons button {
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+::ng-deep .ant-btn-primary {
+  background-color: #f56c6c !important;
+  border: none;
+}
+
+::ng-deep .ant-btn-primary:hover {
+  background-color: #e04b4b !important;
+}
+
+::ng-deep .ant-modal-footer {
+  display: block !important;
+}/*# sourceMappingURL=requests-management.component.css.map */

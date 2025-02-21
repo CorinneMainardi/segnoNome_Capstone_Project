@@ -1,0 +1,75 @@
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>
+      Username
+    </nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input your username!"
+    >
+      <nz-input-group nzPrefixIcon="user">
+        <input
+          type="text"
+          nz-input
+          id="username"
+          formControlName="username"
+          placeholder="Username"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>
+      Password
+    </nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input your password!"
+    >
+      <div style="position: relative; display: flex; align-items: center">
+        <input
+          nz-input
+          [type]="passwordVisible ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          style="width: 100%; padding-right: 2rem"
+        />
+        <button
+          type="button"
+          (click)="passwordVisible = !passwordVisible"
+          style="
+            position: absolute;
+            right: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          {{ passwordVisible ? "👁️" : "👁️‍🗨️" }}
+        </button>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <button
+    nz-button
+    class="login-form-button login-form-margin"
+    [nzType]="'primary'"
+    (click)="login()"
+  >
+    Log in
+  </button>
+  Or
+  <a routerLink="/register">Register now!</a>
+</form>
+<div *ngIf="errorMessage" style="color: red; margin-bottom: 10px">
+  {{ errorMessage }}
+</div>

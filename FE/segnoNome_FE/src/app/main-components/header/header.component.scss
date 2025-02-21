@@ -1,0 +1,32 @@
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.app-header {
+  position: relative;
+  height: 64px;
+  padding: 0;
+  background: linear-gradient(90deg, #015054 0%, #186f66 100%);
+
+  box-shadow: 0 1px 4px #013c49;
+}
+.header-trigger {
+  height: 64px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+}
+
+.trigger:hover {
+  color: black;
+}
+.claim {
+  font-family: Parisienne, cursive;
+  font-weight: 400;
+  font-size: larger;
+  font-style: normal;
+  color: white;
+}

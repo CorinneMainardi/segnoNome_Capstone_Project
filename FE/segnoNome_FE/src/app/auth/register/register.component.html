@@ -1,0 +1,93 @@
+<h1>Registrati per poter imparare la LIS</h1>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label nzFor="firstName" nzRequired>Nome</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci il tuo nome!">
+      <input nz-input formControlName="firstName" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="lastName" nzRequired>Cognome</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci il tuo cognome!">
+      <input nz-input formControlName="lastName" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="email" nzRequired>E-mail</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci una email valida!">
+      <input nz-input formControlName="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="username" nzRequired>Username</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci il tuo username!">
+      <input nz-input formControlName="username" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="password" nzRequired>Password</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci una password!">
+      <input
+        nz-input
+        [type]="passwordVisible ? 'text' : 'password'"
+        formControlName="password"
+      />
+      <button type="button" (click)="passwordVisible = !passwordVisible">
+        👁️
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Captcha -->
+  <nz-form-item>
+    <nz-form-label nzFor="captcha" nzRequired>Captcha</nz-form-label>
+    <nz-form-control nzErrorTip="Inserisci il captcha corretto!">
+      <div style="display: flex; align-items: center">
+        <input nz-input formControlName="captcha" />
+        <button type="button" (click)="generateCaptcha()">🔄</button>
+      </div>
+      <div
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          background: #eee;
+          padding: 5px;
+          display: inline-block;
+        "
+      >
+        {{ generatedCaptcha }}
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Checkbox per accettazione regolamento -->
+  <nz-form-item>
+    <nz-form-control>
+      <label nz-checkbox formControlName="agree">
+        <span
+          >Ho letto e accetto il <a routerLink="/terms">regolamento</a></span
+        >
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">
+        Register
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<!-- Messaggi di errore/successo -->
+<div *ngIf="successMessage" style="color: green; margin-bottom: 10px">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" style="color: red; margin-bottom: 10px">
+  {{ errorMessage }}
+</div>

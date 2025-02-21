@@ -1,0 +1,124 @@
+@charset "UTF-8";
+.body {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.button-danger {
+  background-color: #d9534f; /* Rosso Bootstrap */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.button-danger:hover {
+  background-color: #c9302c; /* Rosso più scuro al passaggio del mouse */
+}
+
+.delete {
+  background: rgb(238, 9, 9);
+  background: radial-gradient(circle, rgb(238, 9, 9) 0%, rgb(159, 31, 53) 100%);
+  color: black;
+  border-radius: 3px;
+  margin-bottom: 50px;
+}
+
+.button-danger:active {
+  transform: scale(0.95); /* Effetto di pressione */
+}
+
+.button-danger:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.popup-message {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+}
+
+.error-message {
+  background-color: #f44336;
+  color: white;
+}
+
+::ng-deep .ant-modal {
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+
+::ng-deep .ant-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+::ng-deep .ant-modal-header {
+  background: #f56c6c;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+
+::ng-deep .modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 10px;
+}
+
+::ng-deep .modal-buttons button {
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+::ng-deep .ant-btn-primary {
+  background-color: #f56c6c !important;
+  border: none;
+}
+
+::ng-deep .ant-btn-primary:hover {
+  background-color: #e04b4b !important;
+}
+
+::ng-deep .ant-modal-footer {
+  display: block !important;
+}/*# sourceMappingURL=user-detail.component.css.map */

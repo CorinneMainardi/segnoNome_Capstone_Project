@@ -1,0 +1,207 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      @if(isLogged){
+      <a routerLink="/home">
+        <img src="logo.png" alt="logo" />
+        <h1>#SEGNONOME</h1>
+      </a>
+      }@else{
+      <a routerLink="">
+        <img src="logo.png" alt="logo" />
+        <h1>#SEGNONOME</h1> </a
+      >}
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      @if(isLogged && userRole === 'ROLE_USER'){
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="/home"
+          ><span nz-icon nzType="home" nzTheme="outline"></span> Home</a
+        >
+      </li>
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/dictionary"
+              ><span nz-icon nzType="star" nzTheme="outline"></span
+              >Dictionary</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/videoclasses"
+              ><span nz-icon nzType="star" nzTheme="outline"></span>Video
+              Classes</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/lesson-interests"
+              ><span nz-icon nzType="star" nzTheme="outline"></span>Lessons</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li nz-submenu nzOpen nzTitle="Setting" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/user-detail"
+              ><span nz-icon nzType="user" nzTheme="outline"></span> Profile</a
+            >
+          </li>
+
+          <li nz-menu-item nzMatchRouter>
+            <a (click)="logout()"
+              ><span nz-icon nzType="poweroff" nzTheme="outline"></span>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </li>
+      } @if(isLogged && userRole === 'ROLE_CREATOR'){
+
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/requests-management"
+              ><span nz-icon nzType="home" nzTheme="outline"></span> Request
+              Management</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/dictionary-manage"
+              ><span nz-icon nzType="star" nzTheme="outline"></span> Manage
+              Dictionary</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/videoclasses-manage"
+              ><span nz-icon nzType="star" nzTheme="outline"></span> Manage
+              Video Classes</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/event-manage"
+              ><span nz-icon nzType="star" nzTheme="outline"></span> Manage
+              Events</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Add Content" nzIcon="video-camera-add">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/add-dictionary"
+              ><span nz-icon nzType="star" nzTheme="outline"></span>Add Video to
+              Dictionary</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/add-videoclass"
+              ><span nz-icon nzType="star" nzTheme="outline"></span> Add Video
+              Class</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/add-event"
+              ><span nz-icon nzType="star" nzTheme="outline"></span> Add Event
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Setting" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a (click)="logout()"
+              ><span nz-icon nzType="poweroff" nzTheme="outline"></span>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </li>
+      } @if(isLogged && userRole === 'ROLE_ADMIN'){
+
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin-dashboard"
+              ><span nz-icon nzType="home" nzTheme="outline"></span> Admin
+              Dashboard
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Setting" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a (click)="logout()"
+              ><span nz-icon nzType="poweroff" nzTheme="outline"></span>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </li>
+      } @if(!isLogged){
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink=""
+            ><span nz-icon nzType="bank" nzTheme="outline"></span> Welcome</a
+          >
+        </li>
+      </ul>
+      <li nz-submenu nzOpen nzTitle="Authentication" nzIcon="usergroup-add">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/register"
+              ><span nz-icon nzType="user-add" nzTheme="outline"></span>
+              Register</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/login"
+              ><span nz-icon nzType="login" nzTheme="outline"></span> Login</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      }
+      <li nz-submenu nzOpen nzTitle="Info" nzIcon="info-circle">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/static-pages/about-us"
+              ><span nz-icon nzType="profile" nzTheme="outline"></span> About
+              Us</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/static-pages/contacts"
+              ><span nz-icon nzType="phone" nzTheme="outline"></span>
+              Contacts</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <app-header></app-header>
+    <nz-content>
+      <!-- <div class="inner-content"> -->
+      <router-outlet></router-outlet>
+      <!-- </div> -->
+    </nz-content>
+    <app-footer></app-footer>
+  </nz-layout>
+</nz-layout>

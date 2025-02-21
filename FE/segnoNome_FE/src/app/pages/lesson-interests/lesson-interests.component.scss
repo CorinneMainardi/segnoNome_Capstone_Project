@@ -1,0 +1,83 @@
+// Stile per dispositivi mobili
+h1 {
+  color: #197872;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2rem;
+}
+.body {
+  text-align: center;
+  margin-bottom: 70px;
+  p {
+    margin-bottom: 50px;
+  }
+  button {
+    background: rgb(42, 102, 97);
+    background: linear-gradient(
+      34deg,
+      rgba(42, 102, 97, 1) 0%,
+      rgba(81, 213, 198, 1) 53%,
+      rgba(30, 83, 77, 1) 100%
+    );
+    color: black;
+    display: block;
+    margin: auto;
+    border-radius: 3px;
+  }
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  nz-card {
+    width: 90%;
+    margin: auto;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+.popup-message {
+  position: fixed;
+  top: 60px; // 🔽 Posizionato più in basso per una migliore visibilità
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+.success-message {
+  background-color: #4caf50;
+  color: white;
+}
+
+// Stile per desktop
+@media (min-width: 601px) {
+  nz-card {
+    width: 60%;
+    margin: auto;
+  }
+
+  button {
+    width: auto;
+  }
+}

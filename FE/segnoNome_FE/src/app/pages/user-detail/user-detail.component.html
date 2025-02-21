@@ -1,0 +1,109 @@
+<div class="text">
+  <h1>
+    <img *ngIf="user.imgUrl" [src]="user.imgUrl" alt="Profile Image" />Benvenuto
+    {{ user.username }}
+  </h1>
+
+  <p>Inserisci un immagine del profilo</p>
+
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+  <p>Questi sono i dati che hai inserito in fase di registrazione</p>
+</div>
+
+@if(user){
+<div class="card-container">
+  <nz-card nzTitle="I tuoi dati">
+    <p>Nome: {{ user.firstName }}</p>
+    <p>Cognome: {{ user.lastName }}</p>
+    <p>Email: {{ user.email }}</p>
+  </nz-card>
+</div>
+
+}
+
+<div class="text">
+  <h1>Segni dizionario</h1>
+  <p>Qui troverai i segni che hai salvato</p>
+</div>
+<div *ngIf="globalMessage" class="popup-message {{ globalMessageType }}">
+  {{ globalMessage }}
+</div>
+
+@if(favorites.length>0){
+<div class="container">
+  <div *ngFor="let fav of favorites">
+    <nz-modal
+      [(nzVisible)]="confirmDeleteVisible"
+      nzTitle="⚠️ Conferma eliminazione"
+      (nzOnCancel)="confirmDeleteVisible = false"
+      [nzFooter]="footerTemplate"
+    >
+      <div class="delete-modal-content">
+        <p *ngIf="videoToDelete">
+          ❗ Sei sicuro di voler rimuovere <strong>{{ fav.title }}</strong> dai
+          preferiti?
+        </p>
+      </div>
+
+      <ng-template #footerTemplate>
+        <div class="modal-buttons">
+          <button
+            nz-button
+            nzType="default"
+            (click)="confirmDeleteVisible = false"
+          >
+            ❌ Annulla
+          </button>
+          <button nz-button nzType="primary" (click)="confirmDeleteVideo()">
+            ✅ Elimina
+          </button>
+        </div>
+      </ng-template>
+    </nz-modal>
+
+    <div class="video-card">
+      <!-- Video -->
+      <div class="video-container">
+        <video
+          #videoPlayer
+          [src]="fav.dictionaryUrl"
+          width="320"
+          height="180"
+          controls
+          [routerLink]="['/dictionary', fav.id]"
+        ></video>
+      </div>
+      <!-- Info -->
+      <div class="video-info">
+        <h3><span class="input">Titolo: </span> {{ fav.title }}</h3>
+        <p><span class="input">Descrizione: </span> {{ fav.description }}</p>
+      </div>
+      <button
+        class="button-danger delete"
+        nz-button
+        nzType="default"
+        nzShape="round"
+        (click)="confirmRemoveFavorite(fav)"
+      >
+        <span nz-icon nzType="delete" nzTheme="outline"></span> Delete
+      </button>
+      <p
+        *ngIf="fav.id !== undefined && successMessages[fav.id]"
+        class="success-message"
+      >
+        {{ successMessages[fav.id] }}
+      </p>
+
+      <!-- Messaggio di errore -->
+      <p
+        *ngIf="fav.id !== undefined && errorMessages[fav.id]"
+        class="error-message"
+      >
+        {{ errorMessages[fav.id] }}
+      </p>
+    </div>
+  </div>
+</div>
+
+}
