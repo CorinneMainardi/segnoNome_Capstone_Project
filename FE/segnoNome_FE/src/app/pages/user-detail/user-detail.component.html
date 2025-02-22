@@ -1,6 +1,11 @@
 <div class="text">
   <h1>
-    <img *ngIf="user.imgUrl" [src]="user.imgUrl" alt="Profile Image" />Benvenuto
+    <img
+      class="profile"
+      *ngIf="user.imgUrl"
+      [src]="user.imgUrl"
+      alt="Profile Image"
+    />Benvenuto
     {{ user.username }}
   </h1>
 

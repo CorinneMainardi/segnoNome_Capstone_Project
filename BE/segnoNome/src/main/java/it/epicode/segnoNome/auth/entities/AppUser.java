@@ -48,9 +48,7 @@ public class AppUser implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "dictionary_id")
     )
     private List<Dictionary> favoritesD = new ArrayList<>();
-
-
-
+    private String email;
     private String imgUrl;
 
     @Column(nullable = false)

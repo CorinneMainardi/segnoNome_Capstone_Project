@@ -86,18 +86,12 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   updateCharts() {
     this.userChartOptions = {
       chart: { type: 'pie' },
-      title: { text: 'Utenti Registrati vs. Acquisti' },
+      title: { text: `Utenti Registrati:  ${this.totalUsers}` },
       series: [
         {
           type: 'pie',
           name: 'Users',
-          data: [
-            { name: 'Utenti iscritti', y: this.totalUsers },
-            {
-              name: 'Utenti che hanno comprato le videolezioni',
-              y: this.usersWhoPaid,
-            },
-          ],
+          data: [{ name: 'Utenti iscritti', y: this.totalUsers }],
         } as Highcharts.SeriesPieOptions,
       ],
     };
@@ -125,9 +119,12 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
           type: 'pie',
           name: 'Acquisti',
           data: [
-            { name: 'Hanno acquistato', y: this.usersWhoPaid },
             {
-              name: 'Non hanno acquistato',
+              name: 'Utenti che hanno acquistato le videolezioni',
+              y: this.usersWhoPaid,
+            },
+            {
+              name: 'Utenti che non hanno acquistato le videolezioni',
               y: this.totalUsers - this.usersWhoPaid,
             },
           ],
